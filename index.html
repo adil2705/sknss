@@ -34,7 +34,48 @@
 	
 </head>
 	
-<body id="bdy">		
+<body id="bdy">	
+	  <!--importing library for contact form-->
+	<!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>	
+
+	<script>
+        $(document).ready(function () {
+            var user, to, subject, text;
+            $("#send_email").click(function () {
+                // enter your email account that you want to recieve emails at.
+                to = "ahmadadil2705@gmail.com";  //YAHA PAR BAAD ME SKNS KA AAEGA
+               
+                name = $("#name").val();
+                user = $("#user_email").val();
+		phone= $("#phone").val();
+                text = $("#textarea1").val();
+                // $("#message").text("Sending E-mail...Please wait");
+                $.get("https://contact-form-backend-wtwc.onrender.com/send", {
+                    to: to,
+                    name: name,
+                    user: user,
+		    phone:phone,
+                    text: text
+                }, function (data) {
+                    if (data == "sent") {
+                        console.log("Email sent");
+                    }
+                });
+            });
+        });
+    </script>
+
+<script>
+	$(document).ready(function(){
+	  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	  $('.modal-trigger').leanModal();
+	});
+	  </script>
+	//codeEND
+  =================================================================
 
 	<!-- Start PreLoader 
     ============================================= -->
@@ -1529,17 +1570,17 @@ BIHAR – 800026
 										Fill the form below
 									</h2>
 								</div>
-								<div class="contact-form">
+							<div class="contact-form">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-												<input type="text" class="form-control input-style-2" id="username" name="username" class="userName"  required placeholder="Your Full Name*">
+												<input type="text" class="form-control input-style-2" id="name" name="name" class="userName"  required placeholder="Your Full Name*">
 												<span class="alert alert-error"></span>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<input type="email" class="form-control input-style-2" id="email" name="email" required placeholder="Your Email Address*">
+												<input type="email" class="form-control input-style-2"  id="user_email" required placeholder="Your Email Address*">
 												<span class="alert alert-error"></span>
 											</div>
 										</div>
@@ -1550,19 +1591,18 @@ BIHAR – 800026
 											</div>
 										</div>
 										<div class="col-md-12">
-											<textarea class="form-control input-style-2" id="msg" name="msg" required placeholder="Your Message..."></textarea>
+											<textarea class="form-control input-style-2" id="textarea1" required placeholder="Your Message..."></textarea>
 											<!-- Alert Message -->
 											<div class="alert-notification">
 												<div id="message" class="alert-msg"></div>
-											</div>
-											<button type="submit" name="submit" id="submit" class="btn-submit">
-												<i class="icofont-paper-plane mr-1"></i>
-												Get in touch 
-											</button>
+											</div>	
 										</div>
 									</div>
 								</form>
-								<div class="messageDisplay"></div>
+								<a type="submit" name="submit" id="send_email" class="btn-submit" href="modal1" >
+									<i class="icofont-paper-plane mr-1"></i>
+									Get in touch 
+								</a>
 							</div>
 						</div>
 					</div>
@@ -1571,6 +1611,11 @@ BIHAR – 800026
 		</div>
 		</div>
 		<!-- End Contact Us -->
+	<!-- Message Sent Modal Structure -->
+        <div id="modal1">
+             <alert>Your email has been sent. I'll get back to you shortly.</alert>
+        </div>
+            
 		
 	</main>	
 	
