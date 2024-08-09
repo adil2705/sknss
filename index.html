@@ -52,7 +52,8 @@
                 user = $("#user_email").val();
 		phone= $("#phone").val();
                 text = $("#textarea1").val();
-                // $("#message").text("Sending E-mail...Please wait");
+                // Show a loading message
+                $("#message").text("Sending E-mail... Please wait").removeClass('alert-success').addClass('alert-info');
                 $.get("https://skns-backend.onrender.com/send", {
                     to: to,
                     name: name,
@@ -60,9 +61,13 @@
 		    phone:phone,
                     text: text
                 }, function (data) {
-                    if (data == "sent") {
-                        console.log("Email sent");
-                    }
+            if (data === "sent") {
+                // If email is successfully sent
+                $("#message").text("Your email has been sent successfully!").removeClass('alert-info').addClass('alert-success');
+            } else {
+                // If there was an error
+                $("#message").text("An error occurred while sending your email. Please try again.").removeClass('alert-info').addClass('alert-danger');
+            }
                 });
             });
         });
