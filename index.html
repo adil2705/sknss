@@ -1619,36 +1619,40 @@ BIHAR – 800026
                 <div class="col-md-12">
                     <div class="form-group">
                         <input type="text" class="form-control input-style-2" id="name" name="name" required placeholder="Your Full Name*">
-                        <span class="alert alert-error"></span>
+                        <span id="nameError" class="alert alert-error"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <input type="email" class="form-control input-style-2" id="user_email" required placeholder="Your Email Address*">
-                        <span class="alert alert-error"></span>
+                        <span id="emailError" class="alert alert-error"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <input type="text" class="form-control input-style-2" id="phone" name="phone" required placeholder="Phone Number">
-                        <span class="alert alert-error"></span>
+                        <span id="phoneError" class="alert alert-error"></span>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <textarea class="form-control input-style-2" id="textarea1" required placeholder="Your Message..."></textarea>
+                    <div class="form-group">
+                        <textarea class="form-control input-style-2" id="textarea1" required placeholder="Your Message..."></textarea>
+                        <span id="messageError" class="alert alert-error"></span>
+                    </div>
                     <!-- Alert Message -->
                     <div class="alert-notification">
                         <div id="message" class="alert-msg"></div>
                     </div>	
                 </div>
             </div>
-            <a type="submit" name="submit" id="send_email" class="btn-submit" >
+            <button type="submit" name="submit" id="send_email" class="btn-submit">
                 <i class="icofont-paper-plane mr-1"></i>
                 Get in touch 
-            </a>
+            </button>
         </div>
     </div>
 </div>
+
 
 		<!-- End Contact Us -->
 	 <!-- Message Sent Modal Structure -->
