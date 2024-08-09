@@ -42,37 +42,75 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>	
 
 	<script>
-        $(document).ready(function () {
-            var user, to, subject, text;
-            $("#send_email").click(function () {
-		    event.preventDefault();
-                // enter your email account that you want to recieve emails at.
-                to = "ahmadadil2705@gmail.com";  //YAHA PAR BAAD ME SKNS KA AAEGA
-               
-                name = $("#name").val();
-                user = $("#user_email").val();
-		phone= $("#phone").val();
-                text = $("#textarea1").val();
+    $(document).ready(function () {
+        var user, to, name, phone, text;
+
+        $("#send_email").click(function (event) {
+            event.preventDefault();
+
+            // Clear previous error messages
+            $("#nameError").text("");
+            $("#emailError").text("");
+            $("#phoneError").text("");
+            $("#messageError").text("");
+            $("#message").text("");
+
+            // Validate form fields
+            var isValid = true;
+
+            name = $("#name").val().trim();
+            if (name === "") {
+                $("#nameError").text("Name is required.");
+                isValid = false;
+            }
+
+            user = $("#user_email").val().trim();
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!user.match(emailPattern)) {
+                $("#emailError").text("Please enter a valid email address.");
+                isValid = false;
+            }
+
+            phone = $("#phone").val().trim();
+            var phonePattern = /^\d{10}$/; // Example: 10 digit phone number
+            if (!phone.match(phonePattern)) {
+                $("#phoneError").text("Please enter a valid 10-digit phone number.");
+                isValid = false;
+            }
+
+            text = $("#textarea1").val().trim();
+            if (text === "") {
+                $("#messageError").text("Message is required.");
+                isValid = false;
+            }
+
+            // If valid, proceed with form submission
+            if (isValid) {
                 // Show a loading message
-                $("#message").text("Sending E-mail... Please wait").removeClass('alert-success').addClass('alert-info');
+                $("#message").text("Sending E-mail... Please wait").removeClass('alert-success alert-danger').addClass('alert-info');
+
                 $.get("https://skns-backend.onrender.com/send", {
-                    to: to,
+                    to: "ahmadadil2705@gmail.com",  // Change this to the desired email later
                     name: name,
                     user: user,
-		    phone:phone,
+                    phone: phone,
                     text: text
                 }, function (data) {
-            if (data === "sent") {
-                // If email is successfully sent
-                $("#message").text("Your email has been sent successfully!").removeClass('alert-info').addClass('alert-success');
-            } else {
-                // If there was an error
-                $("#message").text("An error occurred while sending your email. Please try again.").removeClass('alert-info').addClass('alert-danger');
-            }
+                    if (data === "sent") {
+                        // If email is successfully sent
+                        $("#message").text("Your email has been sent successfully!").removeClass('alert-info alert-danger').addClass('alert-success');
+                        alert("Email sent successfully!");
+                    } else {
+                        // If there was an error
+                        $("#message").text("An error occurred while sending your email. Please try again.").removeClass('alert-info alert-success').addClass('alert-danger');
+                        alert("An error occurred while sending your email. Please try again.");
+                    }
                 });
-            });
+            }
         });
-    </script>
+    });
+</script>
+
 
 <script>
 	$(document).ready(function(){
