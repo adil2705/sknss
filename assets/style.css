@@ -4,7 +4,7 @@
 /*-------------------------------------------------------
 01. Variable css
 ---------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 :root {
   --clr-heading: #000000;
   --clr-body: #7E7E7E;
@@ -19,8 +19,8 @@
   --clr-white: #fff;
   --clr-black: #000;
   --clr-black-2: #080821;
-  --font-1: 'Nunito', sans-serif;
-  --font-2: 'Nunito', sans-serif;
+  --font-1: 'Poppins', sans-serif;
+  --font-2: 'Poppins', sans-serif;
   --font-3: 'Shadows Into Light', cursive;
   --font-4: 'Roboto', sans-serif;
   --font-5: 'Oswald', sans-serif;
@@ -1222,7 +1222,7 @@ label {
 ---------------------------------------------------------*/
 /*footer Default*/
 .footer {
-  background-color: var(--clr-black); }
+  background-color:#dadada; }
   .footer::before {
     position: absolute;
     content: '';
@@ -1234,7 +1234,7 @@ label {
     top: 0;
     left: 0; }
   .footer p {
-    color: var(--clr-ccc); }
+    color: black; }
 
 .footer-bio {
   display: flex;
@@ -1252,7 +1252,7 @@ label {
 
 .footer-widget-title {
   font-weight: 600;
-  color: var(--clr-white);
+  color: black;
   margin-bottom: 4rem;
   padding-bottom: 2rem;
   position: relative;
@@ -1265,14 +1265,14 @@ label {
     left: 0;
     translate: 0 -50%;
     z-index: 1;
-    background-color: var(--clr-white); }
+    background-color: black; }
     .footer-widget-title .footer-title-line::before {
       position: absolute;
       content: '';
       height: 1px;
       width: 30px;
       z-index: -1;
-      background: var(--clr-white);
+      background: black;
       opacity: 1;
       top: 5px;
       left: 0; }
@@ -1282,7 +1282,7 @@ label {
       height: 1px;
       width: 20px;
       z-index: -1;
-      background: var(--clr-white);
+      background: black;
       opacity: 1;
       top: 10px;
       left: 0; }
@@ -1306,7 +1306,7 @@ label {
     display: flex;
     align-items: center;
     gap: 5px;
-    color: var(--clr-body-2); }
+    color: black; }
     .footer-list li a i {
       font-size: 1.4rem; }
 
@@ -1403,7 +1403,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #707070;
+  border-top: 1px solid black;
   position: relative;
   z-index: 1; }
   .copyright .copyright-element::before {
